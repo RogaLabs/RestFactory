@@ -1,6 +1,6 @@
 #RestFactory
 
-RestFactory is an simplifier for HTTP requests , the main objectiv is remove retrofit setup of your application for an library.
+RestFactory is an simplifier for HTTP requests , the main objective is remove retrofit setup of your application for an library.
 
 ## Usage
 
