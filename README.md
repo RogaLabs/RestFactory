@@ -12,7 +12,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        new ApiFactory.Builder()
+        new RestFactory.Builder()
                 .setBaseUrl(yourendpoint)
                 .build(this);
     }
@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ApiFactory.make(this);
+        RestFactory.make(this);
 
         mockApi.getAnything().enqueue(...);
     }
 }
 ```
 
-Note two things , the annotation ```@Rest``` and call method ```ApiFactory.make(this)``` , done that __mockApi__ you can now use your calls.
+Note two things , the annotation ```@Rest``` and call method ```RestFactory.make(this)``` , done that __mockApi__ you can now use your calls.
 
 
 
