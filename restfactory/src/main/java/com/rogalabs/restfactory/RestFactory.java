@@ -1,11 +1,11 @@
-package com.rogalabs.apifactory;
+package com.rogalabs.restfactory;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.rogalabs.apifactory.defaults.LogInterceptor;
-import com.rogalabs.apifactory.parser.DateSerializer;
+import com.rogalabs.restfactory.defaults.LogInterceptor;
+import com.rogalabs.restfactory.parser.DateSerializer;
 
 import java.lang.reflect.Field;
 import java.util.Date;

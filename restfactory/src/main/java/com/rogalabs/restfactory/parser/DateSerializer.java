@@ -1,4 +1,4 @@
-package com.rogalabs.apifactory.parser;
+package com.rogalabs.restfactory.parser;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;

@@ -1,4 +1,4 @@
-package com.rogalabs.apifactory;
+package com.rogalabs.restfactory;
 
 import android.content.Context;
 

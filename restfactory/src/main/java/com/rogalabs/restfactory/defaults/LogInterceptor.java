@@ -1,4 +1,4 @@
-package com.rogalabs.apifactory.defaults;
+package com.rogalabs.restfactory.defaults;
 
 import android.util.Log;
 
