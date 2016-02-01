@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Note two things , the annotation ```@Rest``` and call method ```ApiFactory.make(this)``` , done that __mockApi__ you can now use your calls.
+Note two things , the annotation ```@Rest``` and call method ```RestFactory.make(this)``` , done that __mockApi__ you can now use your calls.
 
 
 
