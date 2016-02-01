@@ -12,7 +12,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        new ApiFactory.Builder()
+        new RestFactory.Builder()
                 .setBaseUrl(yourendpoint)
                 .build(this);
     }
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ApiFactory.make(this);
+        RestFactory.make(this);
 
         mockApi.getAnything().enqueue(...);
     }
