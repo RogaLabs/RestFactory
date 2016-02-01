@@ -2,7 +2,7 @@
     package="com.rogalabs.restfactory">
 
     <application android:allowBackup="true"
-        android:label=""
+        android:label="@string/app_name"
         android:supportsRtl="true"
 >
 
