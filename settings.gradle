@@ -1,1 +1,1 @@
-include ':app', ':restfactory'
+include ':restfactory'
