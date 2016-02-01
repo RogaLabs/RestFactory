@@ -1,4 +1,5 @@
 #RestFactory
+[![](https://jitpack.io/v/RogaLabs/RestFactory.svg)](https://jitpack.io/#RogaLabs/RestFactory)
 
 RestFactory is an simplifier for HTTP requests , the main objective is remove retrofit setup of your application for an library.
 
