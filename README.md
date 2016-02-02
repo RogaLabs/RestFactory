@@ -55,5 +55,29 @@ public class MainActivity extends AppCompatActivity {
 Note two things , the annotation ```@Rest``` and call method ```RestFactory.make(this)``` , done that __mockApi__ you can now use your calls.
 
 
+## Install
+
+Add it in your root build.gradle at the end of repositories:
+
+```
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+and add dependecy:
+
+```
+
+
+	dependencies {
+	        compile 'com.github.RogaLabs.RestFactory:restfactory:{latestversion}'
+	}
+
+```
+
 
 
