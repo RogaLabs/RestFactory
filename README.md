@@ -68,15 +68,12 @@ Add it in your root build.gradle at the end of repositories:
 	}
 ```
 
-and add dependecy:
+and add dependency:
 
 ```
-
-
 	dependencies {
 	        compile 'com.github.RogaLabs.RestFactory:restfactory:{latestversion}'
 	}
-
 ```
 
 
