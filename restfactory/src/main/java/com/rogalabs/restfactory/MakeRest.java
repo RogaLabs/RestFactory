@@ -11,7 +11,7 @@ public abstract class MakeRest {
 
     public MakeRest() {}
 
-    public static void load(Context context , Listener listener) {
+    public static void load(Object context , Listener listener) {
         for (Field field : context.getClass().getDeclaredFields())
             if (field.isAnnotationPresent(Rest.class)) {
                 listener.onLoad(loadFiedls(field));
