@@ -20,6 +20,22 @@ public class Application extends android.app.Application {
 }
 ```
 
+and define your application name and internet permission on manifest file
+
+```
+...
+<uses-permission android:name="android.permission.INTERNET" />
+...
+<application
+        android:name=".Application"
+...
+```
+
+
+
+
+
+
 after , using interfaces for define your calls (the library is not used here) , 
 this interface uses retrofit annotations and types
 
