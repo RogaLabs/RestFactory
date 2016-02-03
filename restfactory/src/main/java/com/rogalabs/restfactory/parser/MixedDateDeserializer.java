@@ -10,13 +10,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class MixedDateDeserializer implements JsonDeserializer<Date> {
 
-    private final String[] dateFormats;
+    private final List<String> dateFormats;
 
-    public MixedDateDeserializer(String... date_formats) {
+    public MixedDateDeserializer(List<String> date_formats) {
         dateFormats = date_formats;
     }
 
@@ -30,6 +31,6 @@ public class MixedDateDeserializer implements JsonDeserializer<Date> {
             }
         }
         throw new JsonParseException("Unparseable date: \"" + jsonElement.getAsString()
-                + "\". Supported formats: " + Arrays.toString(dateFormats));
+                + "\". Supported formats: " + dateFormats);
     }
 }
