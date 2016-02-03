@@ -15,7 +15,7 @@ public class Application extends android.app.Application {
         super.onCreate();
         new RestFactory.Builder()
                 .setBaseUrl(yourendpoint)
-                .build(this);
+                .build();
     }
 }
 ```
