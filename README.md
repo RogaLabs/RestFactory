@@ -71,6 +71,25 @@ public class MainActivity extends AppCompatActivity {
 Note two things , the annotation ```@Rest``` and call method ```RestFactory.make(this)``` , done that __mockApi__ you can now use your calls.
 
 
+## Optional
+
+This lib uses for default this format date ```yyyy-MM-dd HH:mm:ss``` , if you want to use other formats:
+
+```java
+public class Application extends android.app.Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        new RestFactory.Builder()
+                .setBaseUrl(yourendpoint)
+                .addDateFormat(your date pattern or list of date patterns)
+                .build();
+    }
+}
+```
+
+
 ## Install
 
 Add it in your root build.gradle at the end of repositories:
