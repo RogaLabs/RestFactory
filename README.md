@@ -1,7 +1,7 @@
 #RestFactory
 [![](https://jitpack.io/v/RogaLabs/RestFactory.svg)](https://jitpack.io/#RogaLabs/RestFactory)
 
-RestFactory is an simplifier for HTTP requests , the main objective is remove retrofit setup of your application for an library.
+RestFactory is a simplifier for HTTP requests , the main objective is remove retrofit setup of your application for a library.
 
 ## Usage
 
@@ -48,7 +48,7 @@ public interface MockApi {
 
 ```
 
-now , we create the activity 
+now , we'll create the activity
 
 ```java
 
