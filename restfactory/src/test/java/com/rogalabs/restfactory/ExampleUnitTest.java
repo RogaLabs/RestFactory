@@ -1,4 +1,4 @@
-package com.rogalabs.apifactory2;
+package com.rogalabs.restfactory;
 
 import org.junit.Test;
 
