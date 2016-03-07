@@ -1,7 +1,5 @@
 package com.rogalabs.restfactory;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rogalabs.restfactory.defaults.LogInterceptor;
@@ -100,6 +98,15 @@ public class RestFactory extends MakeRest {
             public void onLoad(Field field) {
                 try {
                     field.set(context, create(field.getType(), baseUrl , dateFormats));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onLoadWithBaseUrl(Field field, String anotherBaseUrl) {
+                try {
+                    field.set(context, create(field.getType(), anotherBaseUrl , dateFormats));
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
