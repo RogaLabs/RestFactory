@@ -107,7 +107,7 @@ and add dependency:
 
 ```
 	dependencies {
-	        compile 'com.github.RogaLabs.RestFactory:restfactory:{latestversion}'
+	        compile 'com.github.RogaLabs:RestFactory:{latestversion}'
 	}
 ```
 
