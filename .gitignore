@@ -7,3 +7,7 @@
 .DS_Store
 /build
 /captures
+sampleapp/src/androidTest
+sampleapp/src/test
+restfactory/src/androidTest
+restfactory/src/test
