@@ -1,4 +1,4 @@
-package com.rogalabs.restfactory;
+package com.rogalabs.restfactory.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
