@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
-import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
-import retrofit2.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by roga on 19/01/16.
@@ -26,23 +26,16 @@ public class RestFactory extends MakeRest {
     private static List<String> dateFormats;
     private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-
-    public RestFactory() {
-        super();
-    }
-
-    public RestFactory(String baseUrl) {
-        super();
+    private RestFactory(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    public RestFactory(String baseUrl , List<String> dateFormats) {
-        super();
+    private RestFactory(String baseUrl, List<String> dateFormats) {
         this.baseUrl = baseUrl;
         this.dateFormats = dateFormats;
     }
 
-    private static <T> T create(Class<T> endpoint, String baseUrl,List<String> dateFormats) {
+    private static <T> T create(Class<T> endpoint, String baseUrl, List<String> dateFormats) throws IllegalArgumentException {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new LogInterceptor()).build();
         Gson gson = buildGson(dateFormats);
         Retrofit retrofit = buildRetroFit(client, gson, baseUrl);
@@ -52,7 +45,7 @@ public class RestFactory extends MakeRest {
     private static Gson buildGson(List<String> dateFormats) {
         return new GsonBuilder()
                 .registerTypeAdapter(Date.class, new DateSerializer(DEFAULT_DATE_FORMAT))
-                .registerTypeAdapter(Date.class , new MixedDateDeserializer(dateFormats))
+                .registerTypeAdapter(Date.class, new MixedDateDeserializer(dateFormats))
                 .create();
     }
 
@@ -87,7 +80,7 @@ public class RestFactory extends MakeRest {
         public RestFactory build() {
             if (dateFormats.isEmpty())
                 return new RestFactory(baseUrl);
-            return new RestFactory(baseUrl,dateFormats);
+            return new RestFactory(baseUrl, dateFormats);
         }
     }
 
@@ -97,8 +90,8 @@ public class RestFactory extends MakeRest {
             @Override
             public void onLoad(Field field) {
                 try {
-                    field.set(context, create(field.getType(), baseUrl , dateFormats));
-                } catch (IllegalAccessException e) {
+                    field.set(context, create(field.getType(), baseUrl, dateFormats));
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -106,8 +99,8 @@ public class RestFactory extends MakeRest {
             @Override
             public void onLoadWithBaseUrl(Field field, String anotherBaseUrl) {
                 try {
-                    field.set(context, create(field.getType(), anotherBaseUrl , dateFormats));
-                } catch (IllegalAccessException e) {
+                    field.set(context, create(field.getType(), anotherBaseUrl, dateFormats));
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
