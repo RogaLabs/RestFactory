@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Rest
     MockApi mockApi;
+    
+    //starting 0.5.0 version is possible define other base URL for your interface
+    @Rest( baseUrl = "other base url") 
+    MockApi2 mockApi2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
