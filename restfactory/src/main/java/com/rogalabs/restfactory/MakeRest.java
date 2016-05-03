@@ -1,7 +1,8 @@
 package com.rogalabs.restfactory;
 
-import android.content.Context;
+import com.rogalabs.restfactory.annotations.Rest;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
@@ -9,21 +10,46 @@ import java.lang.reflect.Field;
  */
 public abstract class MakeRest {
 
-    public MakeRest() {}
+    private static String anotherBaseUrl;
 
-    public static void load(Object context , Listener listener) {
+    static void load(Object context, Listener listener) {
         for (Field field : context.getClass().getDeclaredFields())
             if (field.isAnnotationPresent(Rest.class)) {
-                listener.onLoad(loadFiedls(field));
+                if (existsAnotherBaseUrl(field))
+                    listener.onLoadWithBaseUrl(openAccessForField(field), anotherBaseUrl);
+                else
+                    listener.onLoad(openAccessForField(field));
+
             }
     }
 
-    private static Field loadFiedls(Field field) {
+    private static boolean existsAnotherBaseUrl(Field field) {
+        Rest annotation = (Rest) extractAnnotation(field);
+        if (annotation.baseUrl().isEmpty())
+            return false;
+
+        setAnotherBaseUrl(annotation.baseUrl());
+        return true;
+    }
+
+    private static Annotation extractAnnotation(Field field) {
+        for (Annotation annotation : field.getDeclaredAnnotations()) {
+            return annotation;
+        }
+        return null;
+    }
+
+    private static void setAnotherBaseUrl(String baseUrl){
+        anotherBaseUrl = baseUrl;
+    }
+
+    private static Field openAccessForField(Field field) {
         field.setAccessible(true);
         return field;
     }
 
-    public interface Listener{
+    interface Listener {
         void onLoad(Field field);
+        void onLoadWithBaseUrl(Field field, String anotherBaseUrl);
     }
 }

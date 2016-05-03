@@ -1,4 +1,4 @@
-package com.rogalabs.restfactory;
+package com.rogalabs.restfactory.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface Rest {
+    public String baseUrl() default "";
 }
