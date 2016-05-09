@@ -115,6 +115,13 @@ and add dependency:
 	}
 ```
 
+## Credits
+
+[Bruno Lima](https://github.com/brunodles)
+
+Many influences on structuring of this file `RestFactory.class` it was this guy.
+
+
 ##License
 ```
 The MIT License (MIT)
