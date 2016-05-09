@@ -119,7 +119,7 @@ and add dependency:
 
 [Bruno Lima](https://github.com/brunodles)
 
-Many influences on structuring of this file `RestFactory.class` it was this guy.
+All influences on structuring setup of Retrofit it was this guy.
 
 
 ##License
