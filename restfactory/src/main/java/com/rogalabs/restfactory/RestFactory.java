@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -21,6 +22,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by roga on 19/01/16.
  */
 public class RestFactory extends MakeRest {
+
+    private static final int CONNECTION_TIMEOUT = 15;
+    private static final int READ_TIMEOUT = 60;
+    private static final int WRITE_TIMEOUT = 30;
 
     private static String baseUrl;
     private static List<String> dateFormats;
@@ -36,10 +41,19 @@ public class RestFactory extends MakeRest {
     }
 
     private static <T> T create(Class<T> endpoint, String baseUrl, List<String> dateFormats) throws IllegalArgumentException {
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new LogInterceptor()).build();
+        OkHttpClient client = buildOkhttp();
         Gson gson = buildGson(dateFormats);
         Retrofit retrofit = buildRetroFit(client, gson, baseUrl);
         return retrofit.create(endpoint);
+    }
+
+    private static OkHttpClient buildOkhttp(){
+        return  new OkHttpClient.Builder()
+                .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(new LogInterceptor())
+                .build();
     }
 
     private static Gson buildGson(List<String> dateFormats) {
