@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RestFactory extends MakeRest {
 
     private static final int CONNECTION_TIMEOUT = 15;
-    private static final int READ_TIMEOUT = 60;
+    private static final int READ_TIMEOUT = 120;
     private static final int WRITE_TIMEOUT = 30;
 
     private static String baseUrl;
@@ -72,6 +72,28 @@ public class RestFactory extends MakeRest {
                 .build();
     }
 
+    public static void make(final Object context) {
+        load(context, new Listener() {
+            @Override
+            public void onLoad(Field field) {
+                try {
+                    field.set(context, create(field.getType(), baseUrl, dateFormats));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onLoadWithBaseUrl(Field field, String anotherBaseUrl) {
+                try {
+                    field.set(context, create(field.getType(), anotherBaseUrl, dateFormats));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
     public static final class Builder {
         private String baseUrl;
         private List<String> dateFormats = new ArrayList<>();
@@ -98,26 +120,4 @@ public class RestFactory extends MakeRest {
         }
     }
 
-
-    public static void make(final Object context) {
-        load(context, new Listener() {
-            @Override
-            public void onLoad(Field field) {
-                try {
-                    field.set(context, create(field.getType(), baseUrl, dateFormats));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onLoadWithBaseUrl(Field field, String anotherBaseUrl) {
-                try {
-                    field.set(context, create(field.getType(), anotherBaseUrl, dateFormats));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 }
